@@ -4,14 +4,16 @@ and the Price of Legislative Support in Brazil.
 Pedro C. Campelo Albuquerque, Daniel O. Cajueiro, Rafael T. Menezes
 University of Brasilia.
 
-Self-contained manuscript package.
+Self-contained manuscript package (submission-ready, Public Choice / Springer).
 
 Contents
 --------
-paper.tex   Manuscript source (LaTeX, elsarticle class, natbib author-year).
-refs.bib    Bibliography (BibTeX, natbib style plainnat).
-paper.pdf   Compiled manuscript (36 pages).
-figs/       Four PDF figures referenced by paper.tex.
+paper.tex     Manuscript source (LaTeX, sn-jnl class, natbib author-year via sn-basic).
+refs.bib      Bibliography (BibTeX).
+sn-jnl.cls    Springer Nature journal class file (December 2024 version).
+sn-basic.bst  Springer Nature "Basic" author-year bibliography style.
+paper.pdf     Compiled manuscript (30 pages).
+figs/         Five PDF figures referenced by paper.tex.
 
 Compile
 -------

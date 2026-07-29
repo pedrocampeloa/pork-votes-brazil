@@ -93,7 +93,12 @@ CLAUDE.local.md
 
 # Distribution artifact (not tracked)
 paper_package.zip
+overleaf_upload.zip
 
 # Reviewer coordination docs (internal — not public)
 REPORT_*.md
 paper_comments_*.zip
+
+# LaTeX .bak files (local backups)
+*.tex.bak
+*.tex.bak_*

@@ -1,90 +1,79 @@
-% -*- coding: utf-8 -*-
-\documentclass[preprint,12pt,authoryear]{elsarticle}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Springer Nature LaTeX template (December 2024)                  %%
+%% Journal: Public Choice (Springer)                               %%
+%% Reference style: sn-basic (author-year via natbib)              %%
+%%                                                                 %%
+%% Please do not use \input{...} to include other tex files.       %%
+%% Submit your LaTeX manuscript as one .tex document.              %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{color}
-\usepackage{hyperref}
-\usepackage{amsmath}
-\usepackage{amssymb}
+\documentclass[pdflatex,sn-basic]{sn-jnl}
+
+%%%% Standard Packages
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{booktabs}
 \usepackage{longtable}
-\usepackage{booktabs,tabularx}
+\usepackage{tabularx}
 \usepackage[skip=1ex]{caption}
 \usepackage{subcaption}
-\usepackage{multirow}
 \usepackage{adjustbox}
 \usepackage{siunitx}
-\usepackage[para,online,flushleft]{threeparttable}
+% threeparttable is already loaded by sn-jnl.cls
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
 \usepackage{xcolor}
 \usepackage{rotating}
-\usepackage{graphicx}
-\graphicspath{{../figs/}}
 \usepackage{setspace}
 \usepackage{enumitem}
-\usepackage{natbib}
-\bibpunct{(}{)}{;}{a}{,}{,}
+\usepackage[title]{appendix}
+\usepackage{hyperref}
 
-\usepackage{etoolbox}
-\makeatletter
-\def\ps@pprintTitle{%
-   \let\@oddhead\@empty
-   \let\@evenhead\@empty
-   \def\@oddfoot{\reset@font\hfil\thepage\hfil}
-   \let\@evenfoot\@oddfoot}
-\makeatother
-\patchcmd{\pprintMaketitle}
-  {\ifvoid\absbox\else\unvbox\absbox\par\vskip10pt\fi}
-  {\ifvoid\absbox\else\clearpage\unvbox\absbox\par\vskip30pt\fi}
-  {}{}
-\patchcmd{\pprintMaketitle}{\hrule\vskip12pt}{}{}{}
-\patchcmd{\pprintMaketitle}{\hrule\vskip12pt}{}{}{}
+\graphicspath{{../figs/}}
+
+\raggedbottom
 
 \begin{document}
 
-\begin{frontmatter}
+\title[When Pork Changes Hands]{When Pork Changes Hands: Coalition Presidentialism, Legislative Capture, and the Price of Legislative Support in Brazil}
 
-\title{When Pork Changes Hands:\\
-Coalition Presidentialism, Legislative Capture, and the Price of Legislative Support in Brazil\tnoteref{t1}}
-\tnotetext[t1]{Replication code and analysis-ready panel: \href{https://doi.org/10.5281/zenodo.21378905}{doi.org/10.5281/zenodo.21378905}. GitHub repository: \href{https://github.com/pedrocampeloa/pork-votes-brazil}{github.com/pedrocampeloa/pork-votes-brazil}.}
+\author*[1]{\fnm{Pedro Caiua} \sur{Campelo Albuquerque}}\email{pedro.caiua@aluno.unb.br}
 
-\author[pedro]{Pedro C. Campelo Albuquerque}
-\author[daniel]{Daniel O. Cajueiro}
-\author[rafael]{Rafael T. Menezes}
+\author[1,2]{\fnm{Daniel Oliveira} \sur{Cajueiro}}\email{danielcajueiro@unb.br}
 
-\address[pedro]{Department of Economics, University of Brasilia, Campus Universit\'ario Darcy Ribeiro -- FACE, Bras\'ilia, DF 70910-900, Brazil. \textit{Email:} pedro.caiua@aluno.unb.br}
+\author[1]{\fnm{Rafael Terra} \sur{de Menezes}}\email{rafaelmenezes@unb.br}
 
-\address[daniel]{Department of Economics and National Institute of Science and Technology for Complex Systems (INCT-SC), University of Brasilia, Bras\'ilia, DF 70910-900, Brazil.}
+\affil*[1]{\orgdiv{Department of Economics}, \orgname{University of Bras\'ilia}, \orgaddress{\street{Campus Universit\'ario Darcy Ribeiro, FACE}, \city{Bras\'ilia}, \postcode{70910-900}, \state{DF}, \country{Brazil}}}
 
-\address[rafael]{Department of Economics, University of Brasilia, Bras\'ilia, DF 70910-900, Brazil.}
+\affil[2]{\orgdiv{National Institute of Science and Technology for Complex Systems (INCT-SC)}, \orgname{University of Bras\'ilia}, \orgaddress{\city{Bras\'ilia}, \postcode{70910-900}, \state{DF}, \country{Brazil}}}
 
-\begin{abstract}
-Pork-barrel politics has long been the canonical explanation for legislative support in coalition-presidential democracies, but the institutional distribution of budget control between the Executive and the Legislature is not static. When constitutional, judicial, or procedural reforms shift control over legislative amendments across institutional actors, the residual margin of bargaining migrates to whichever actor retains procedural control over the budget. Using an instrumental-variables Double Machine Learning strategy on the Brazilian Chamber of Deputies, a paradigmatic case, we document two coefficients that together describe a single phenomenon. First, the canonical pork-for-votes effect on alignment with the Executive reverses sign between consecutive legislatures once the Executive's discretionary leverage over amendment execution is curtailed, turning from positive to negative. Second, the disappearance of the Executive coefficient coincides with the emergence of a positive coefficient on alignment with the Chamber president's party once a new leadership takes office, robust to the exclusion of his own party and absorbed entirely by the broader \emph{Centr\~ao}. The pork-for-votes bargain did not vanish; it changed hands. The residual leverage migrated from the Executive to the Chamber leadership, and the visible-amendment instrument migrated with it. We interpret the regime change as \emph{legislative capture} of the pork channel and argue that the mechanism generalizes: whenever institutional reforms shift control over the budget between principals, the associated bargaining coefficients should be expected to shift with them.
-\end{abstract}
+\abstract{Pork-barrel politics has long been the standard explanation for legislative support in coalition-presidential democracies, but the institutional distribution of budget control between the Executive and the Legislature is not static. When constitutional, judicial, or procedural reforms shift control over legislative amendments across institutional actors, the residual margin of bargaining migrates to whichever actor retains procedural control over the budget. Using an instrumental-variables Double Machine Learning strategy on the Brazilian Chamber of Deputies, a paradigmatic case, we document two coefficients that together describe a single phenomenon. First, the canonical pork-for-votes effect on alignment with the Executive reverses sign between consecutive legislatures once the Executive's discretionary leverage over amendment execution is curtailed, turning from positive to negative. Second, the disappearance of the Executive coefficient coincides with the emergence of a positive coefficient on alignment with the Chamber president's party once a new leadership takes office, robust to the exclusion of his own party and absorbed entirely by the broader \emph{Centr\~ao}. The pork-for-votes bargain did not vanish; it changed hands. The residual leverage migrated from the Executive to the Chamber leadership, and the visible-amendment instrument migrated with it. We interpret the regime change as \emph{legislative capture} of the pork channel and argue that the mechanism generalizes: whenever institutional reforms shift control over the budget between principals, the associated bargaining coefficients should be expected to shift with them.}
 
-\begin{keyword}
-pork-barrel politics \sep coalition presidentialism \sep legislative capture \sep instrumental variables \sep legislative alignment \sep Brazil
-\\[2pt]
-\textit{JEL:} D72 \sep H50 \sep P16
-\end{keyword}
+\keywords{pork-barrel politics, coalition presidentialism, legislative capture, instrumental variables, legislative alignment, Brazil}
 
-\end{frontmatter}
+\pacs[JEL Classification]{D72, H50, P16}
 
-% ============================================================================
+\maketitle
+
+\footnotetext[1]{Replication code and analysis-ready panel: \href{https://doi.org/10.5281/zenodo.21378905}{doi.org/10.5281/zenodo.21378905}. GitHub repository: \href{https://github.com/pedrocampeloa/pork-votes-brazil}{github.com/pedrocampeloa/pork-votes-brazil}.}
+
 \section{Introduction}
 \label{sec:intro}
 % ============================================================================
 
 How do executives sustain legislative majorities when their own party commands only a minority of seats? Coalitional presidential systems answer this question with pork: the executive channels federal-budget resources to deputies' districts in exchange for legislative support, and the resulting amendments serve as the principal monetary instrument of coalition management. Brazil has been the empirical laboratory of this argument for nearly four decades. \citet{Abranches1988} coined the term \emph{presidencialismo de coaliz\~ao} to describe how Brazilian presidents assemble broad ideological coalitions through portfolios and pork; \citet{PereiraAndMueller2004} and \citet{Raile2011} provide the foundational evidence that amendment execution causally predicts roll-call alignment with the government. Subsequent work confirms the qualitative pattern \citep{Zucco2009,Power2010,FigueiredoLimongi2000}. The implicit assumption in this literature is that the pork-for-votes relationship is structural, positive, and identified relative to the Executive. We document that none of those three properties holds once the institutional distribution of budget control shifts between principals: the sign is not structural, the direction depends on which actor retains procedural control over the visible amendment, and the identity of the receiving principal is itself endogenous to institutional reform.
 
-Using an instrumental-variables Double Machine Learning (IV-DML) strategy on a panel of $869{,}902$ deputy-vote observations from the 55th and 56th Legislatures, we estimate two coefficients that read together as a single phenomenon. First, the effect of pre-vote amendment commitments on alignment with the Executive is regime-dependent and changes sign between two consecutive legislatures. Under the Rousseff-Temer administrations (Legislature 55, 2015--2018)\footnote{Dilma Rousseff (PT) presided from 1 January 2015 to 31 August 2016, when the Senate concluded her impeachment; Vice-President Michel Temer (MDB) served the remainder of the term through 31 December 2018. We refer to the joint period by the pair to reflect the fact that both governments operated within Legislature 55, and we use ``Temer'' alone in later passages as a shorthand for the coalitional equilibrium that stabilized after the impeachment and produced the pre-2019 pork-for-votes coefficient.} an additional one million reais of pre-vote committed amendment raises the probability of alignment by $1.73$ percentage points, consistent with the canonical Pereira--Mueller estimate. Under Bolsonaro (Legislature 56, 2019--2022) the same instrument predicts a $0.94$-point \emph{decrease} in Executive alignment, statistically significant at the one-percent level. Second, the disappearance of the Executive coefficient coincides with the emergence of a positive coefficient when the outcome is re-defined as alignment with the formal voting orientation of the party of the Chamber president (the Speaker of the lower house of Congress, elected by his peers and the chief gatekeeper of the legislative agenda). Under the presidency of Rodrigo Maia (DEM, July 2016 through January 2021), pork purchases alignment with DEM in the same direction as alignment with the Temer government, because DEM was a junior member of the Temer coalition. Under the presidency of Arthur Lira (PP, February 2021 onward), the coefficient on alignment with PP is $+0.33$ percentage points per million reais, robust to the exclusion of Lira's own deputies and absorbed entirely by the broader \emph{Centr\~ao} coalition.\footnote{The \emph{Centr\~ao} is a fluid bloc of centrist and center-right parties that trades legislative support for cabinet positions and budget access regardless of who holds the presidency. Its composition varies over time but stabilizes around a set of nine parties (PP, PL, Republicanos, Solidariedade, Uni\~ao Brasil, PTB, Avante, PSD, MDB) in the sample window.}
+Using an instrumental-variables Double Machine Learning (IV-DML) strategy on a panel of $869{,}902$ deputy-vote observations from the 55th and 56th Legislatures, we estimate two coefficients that read together as a single phenomenon. First, the effect of pre-vote amendment commitments on alignment with the Executive is regime-dependent and changes sign between two consecutive legislatures. Under the Rousseff-Temer administrations (Legislature 55, 2015--2018)\footnote{Dilma Rousseff (PT) presided from 1 January 2015 to 31 August 2016, when the Senate concluded her impeachment; Vice-President Michel Temer (MDB) served the remainder of the term through 31 December 2018. We refer to the joint period by the pair to reflect the fact that both governments operated within Legislature 55, and we use ``Temer'' alone in later passages as a shorthand for the coalitional equilibrium that stabilized after the impeachment and produced the pre-2019 pork-for-votes coefficient.} an additional one million reais of pre-vote committed amendment raises the probability of alignment by $1.73$ percentage points, consistent with the Pereira--Mueller estimate. Under Bolsonaro (Legislature 56, 2019--2022) the same instrument predicts a $0.94$-point \emph{decrease} in Executive alignment, statistically significant at the one-percent level. Second, the disappearance of the Executive coefficient coincides with the emergence of a positive coefficient when the outcome is re-defined as alignment with the formal voting orientation of the party of the Chamber president (the Speaker of the lower house of Congress, elected by his peers and the chief gatekeeper of the legislative agenda). Under the presidency of Rodrigo Maia (DEM, July 2016 through January 2021), pork purchases alignment with DEM in the same direction as alignment with the Temer government, because DEM was a junior member of the Temer coalition. Under the presidency of Arthur Lira (PP, February 2021 onward), the coefficient on alignment with PP is $+0.33$ percentage points per million reais, robust to the exclusion of Lira's own deputies and absorbed entirely by the broader \emph{Centr\~ao} coalition.\footnote{The \emph{Centr\~ao} is a fluid bloc of centrist and center-right parties that trades legislative support for cabinet positions and budget access regardless of who holds the presidency. Its composition varies over time but stabilizes around a set of nine parties (PP, PL, Republicanos, Solidariedade, Uni\~ao Brasil, PTB, Avante, PSD, MDB) in the sample window.}
 
 The two coefficients organize into a single substantive thesis. The pork-for-votes bargain did not stop functioning under Bolsonaro. The bargain changed hands. Under the programmatic-coalitional regime of the Temer presidency, an Executive bargaining with a fragmented multiparty coalition allocated visible amendments along a loyalty gradient documented by the classical literature \citep{PereiraAndMueller2004,Raile2011}. Under the Bolsonaro presidency, the same allocation device produced a negative coefficient in the Executive-aligned outcome and a positive coefficient of comparable order of magnitude in the outcome aligned with the new Centr\~ao-led Chamber leadership. We refer to this institutional transfer as \emph{legislative capture} of the pork channel. The empirical reversal is not a vanishing of distributive bargaining but a re-routing through a different institutional principal, conditioned by the constitutional changes that bound the Executive's discretionary leverage between 2015 and 2019 and completed by the election of an opposition Chamber president in February 2021.
 
-Establishing causality requires a strategy that survives the well-known endogeneity of pork allocation. The Executive observes deputies' reservation prices and allocates resources strategically, so naive regressions confound the structural effect with the allocation rule \citep{BerryGrosscloseMilyo2000,DesposatoCOE2006}. We instrument amendment commitments with the \emph{ministry execution backlog}, a deputy-specific shock rooted in the administrative capacity of the ministry through which each deputy's amendment is processed. Ministries enter each fiscal year with zero year-to-date execution and build up gradually; a ministry entering the fourth quarter with a low cumulative execution rate faces acute administrative pressure to commit funds before the December~31 expiration deadline established by Article~35 of the 1964 Budget Law. Deputies whose amendments flow through such ministries receive an exogenous acceleration of commitments driven by administrative backlog clearing, not by the political value of any specific vote. The instrument's identifying variation is cross-deputy heterogeneity in the ministry-level cumulative execution rate, conditional on bill-type, thematic, and electoral-cycle controls; the December~31 deadline supplies the mechanism but is not itself the exclusion-satisfying variation. The first-stage $F$-statistic exceeds $4{,}000$ in each legislature separately, well above the Stock--Yogo critical value of $10$. We fold this instrument into a partially-linear IV framework with high-dimensional non-parametric controls \citep{Chernozhukov2018}, deputy and party fixed effects, and cluster-robust standard errors.
+Establishing causality requires a strategy that survives the well-known endogeneity of pork allocation. The Executive observes deputies' reservation prices and allocates resources strategically, so naive regressions confound the structural effect with the allocation rule \citep{BerryGrosscloseMilyo2000,DesposatoCOE2006}. We instrument amendment commitments with the \emph{ministry execution backlog}, a deputy-specific shock rooted in the administrative capacity of the ministry through which each deputy's amendment is processed. Ministries enter each fiscal year with zero year-to-date execution and build up gradually; a ministry entering the fourth quarter with a low cumulative execution rate faces acute administrative pressure to commit funds before the December~31 expiration deadline established by Article~35 of the 1964 Budget Law. Deputies whose amendments flow through such ministries receive an exogenous acceleration of commitments driven by administrative backlog clearing, not by the political value of any specific vote. The instrument's identifying variation is cross-deputy heterogeneity in the ministry-level cumulative execution rate, conditional on bill-type, thematic, and electoral-cycle controls; the December~31 deadline supplies the mechanism but is not itself the exclusion-satisfying variation. The first-stage $F$-statistic exceeds $4{,}000$ in each legislature separately, well above the Stock--Yogo critical value of $10$ \citep{StockYogo2005}. We fold this instrument into a partially-linear IV framework with high-dimensional non-parametric controls \citep{Chernozhukov2018}, deputy and party fixed effects, and cluster-robust standard errors.
 
 A natural alternative interpretation of the negative Executive-aligned coefficient must be confronted explicitly. Between 2020 and 2022 the Bolsonaro government routed an estimated R\$45 billion through rapporteur amendments, classified RP-9 in the budget nomenclature, a category of transfers operating outside the standard transparency requirements. The Brazilian Supreme Court (STF, the apex constitutional court) issued a preliminary injunction against the mechanism in November 2021 and declared it unconstitutional in December 2022, after which the political function of the opaque channel migrated to committee (RP-8) and Pix amendments (a direct-deposit modality established by EC 105/2019). Because RP-9 transfers were not individually attributable to deputies during the period of operation, our treatment variable measures only visible amendments, and the Bolsonaro-era coefficient mechanically understates the total pork-for-votes effect through opaque channels. We treat this as a limitation on the \emph{magnitude} of the negative coefficient rather than as a competing interpretation of its sign or of the legislative-capture finding. The opaque channel is, in our reading, the third leg of the same institutional transfer documented in the visible-amendment evidence: nominal authorship of RP-9 was assigned to the budget rapporteur, an institutional figure named by the Chamber president, and the post-2022 RP-8 substitution preserved the legislative authorship structure.
 
-The paper makes three contributions. First, to the literature on pork-barrel politics and coalition presidentialism, we show that the canonical positive sign of the pork-for-votes coefficient is not invariant. The Temer-era estimate replicates the classical \citet{PereiraAndMueller2004} pattern; the Bolsonaro-era estimate reverses it. To our knowledge, this is the first documentation of a sign reversal in the Brazilian pork-for-votes relationship within a continuous panel. Second, we document that the sign reversal is conditional on the institutional identity of the principal. When the outcome is re-defined to track the Chamber president's party rather than the Executive's, the Bolsonaro-era coefficient turns positive, and the regime change is best read as a transfer of bargaining authority across institutional actors rather than as a vanishing of the bargaining technology. Third, methodologically, we document that the choice of inter-annual fixed effects in IV-DML estimation can be consequential when the instrument extracts inter-annual variation. We make this trade-off explicit in our preferred specification and treat it as a feature of what the instrument identifies rather than as a discretionary modeling choice.
+The paper makes three contributions. First, to the literature on pork-barrel politics and coalition presidentialism, we show that the positive sign of the classical pork-for-votes coefficient is not invariant. The Temer-era estimate replicates the classical \citet{PereiraAndMueller2004} pattern; the Bolsonaro-era estimate reverses it. To our knowledge, this is the first documentation of a sign reversal in the Brazilian pork-for-votes relationship within a continuous panel. Second, we document that the sign reversal is conditional on the institutional identity of the principal. When the outcome is re-defined to track the Chamber president's party rather than the Executive's, the Bolsonaro-era coefficient turns positive, and the regime change is best read as a transfer of bargaining authority across institutional actors rather than as a vanishing of the bargaining technology. Third, methodologically, we document that the choice of inter-annual fixed effects in IV-DML estimation can be consequential when the instrument extracts inter-annual variation. We make this trade-off explicit in our preferred specification and treat it as a feature of what the instrument identifies rather than as a discretionary modeling choice.
 
 The remainder of the paper is organized as follows. Section~\ref{sec:institutional} describes the institutional setting, including the legal architecture, the RP-9 episode, the year-end execution calendar, and the aggregate stylized facts. Section~\ref{sec:data} describes the data. Section~\ref{sec:strategy} presents the IV-DML strategy. Section~\ref{sec:results} reports the two central results: the sign reversal in Executive alignment (Subsection~\ref{subsec:main_gov}) and the alignment with the Chamber president (Subsection~\ref{subsec:legislative_capture}). Section~\ref{sec:discussion} interprets the regime change and discusses limitations. Section~\ref{sec:conclusion} concludes. Robustness exercises are in Appendix~\ref{app:robustness}.
 
@@ -106,7 +95,6 @@ Table~\ref{tab:rp_legal_status} summarizes the five amendment categories and the
 \centering
 \caption{Parliamentary amendment categories: legal status before and after the post-2015 reforms.}
 \label{tab:rp_legal_status}
-\begin{threeparttable}
 \small
 \setlength{\tabcolsep}{5pt}
 \begin{tabular}{@{}lllll@{}}
@@ -124,7 +112,6 @@ RP-9     & Budget rapporteur       & Discretionary   & Discretionary (until 2022
 \small
 \item Notes: ``RP'' refers to the primary-result code in the federal budget nomenclature, which classifies expenditure by its institutional origin and execution rule. Mandatory amendments must be executed by the Executive up to the constitutional ceiling indicated; discretionary amendments may be executed or withheld at the Executive's choice within the year. Our treatment variable in the IV-DML specification (Sections~\ref{sec:data}--\ref{sec:strategy}) is the pre-vote committed value of RP-6 amendments to the deputy in question, the channel for which deputy-level authorship is unambiguous throughout the sample window; the remaining categories appear in the institutional discussion of Section~\ref{sec:institutional} and in the alternative outcomes of Section~\ref{sec:results}.
 \end{tablenotes}
-\end{threeparttable}
 \end{table}
 
 \subsection{The RP-9 episode and its substitution}
@@ -139,7 +126,7 @@ The substitution dynamics that followed the STF ruling are quantitatively pronou
 \subsection{The year-end execution cycle and the identification window}
 \label{subsec:execution_cycle}
 
-The empirical core of our identification is the year-end commitment cycle. Brazilian federal expenditure follows three legal stages under Law 4.320/1964: commitment (the formal reservation of funds, which creates a legal payment obligation), settlement (verification that the contracted party fulfilled its obligations), and payment (the cash transfer itself). Article 35 establishes that appropriations not committed by December 31 permanently expire; the spending authority lapses and funds return to the National Treasury. The government does not ``return'' money in any active sense; the authorization simply ceases to exist. To preserve a deputy's amendment within the fiscal year the government must register the commitment before midnight on December 31, and four institutional mechanisms make this near-mandatory. The constitutional obligation introduced by EC 86/2015 means non-execution is now legally actionable; deputies can seek writs of mandamus before the STF, and ministers can face liability under Law 1.079/1950. Bureaucratic ``use-it-or-lose-it'' pressure from the Federal Budget Secretariat reduces ministries' baselines in the following year's budget process. Real-time deputy monitoring via the Federal Transparency Portal generates immediate political friction from any uncommitted amendment. And the carry-over appropriations mechanism allows commitments to be preserved into the following year even when settlement is incomplete, removing any cash-flow justification for non-commitment. The result is a sharp December commitment spike that is administratively, not politically, driven.
+The empirical core of our identification is the year-end commitment cycle. Brazilian federal expenditure follows three legal stages under Law 4.320/1964 \citep{Lei4320}: commitment (the formal reservation of funds, which creates a legal payment obligation), settlement (verification that the contracted party fulfilled its obligations), and payment (the cash transfer itself). Article 35 establishes that appropriations not committed by December 31 permanently expire; the spending authority lapses and funds return to the National Treasury. The government does not ``return'' money in any active sense; the authorization simply ceases to exist. To preserve a deputy's amendment within the fiscal year the government must register the commitment before midnight on December 31, and four institutional mechanisms make this near-mandatory. The constitutional obligation introduced by EC 86/2015 means non-execution is now legally actionable; deputies can seek writs of mandamus before the STF, and ministers can face liability under Law 1.079/1950. Bureaucratic ``use-it-or-lose-it'' pressure from the Federal Budget Secretariat reduces ministries' baselines in the following year's budget process. Real-time deputy monitoring via the Federal Transparency Portal generates immediate political friction from any uncommitted amendment. And the carry-over appropriations mechanism allows commitments to be preserved into the following year even when settlement is incomplete, removing any cash-flow justification for non-commitment. The result is a sharp December commitment spike that is administratively, not politically, driven.
 
 Figure~\ref{fig:seasonality} illustrates the resulting calendar mismatch. Voting activity peaks in May, when the legislative agenda is heaviest. Amendment commitments peak in December, when plenary activity is winding down before recess. December alone concentrates $25.0$ percent of annual commitment value while housing only $12.1$ percent of roll-call votes; the Q4 commitment-to-vote ratio is $1.45$, against $1.20$ in Q2 and $0.79$ in Q3. This systematic mismatch between the two calendars is precisely what makes the fiscal deadline an exogenous instrument: the government's incentive to register commitments in December is driven by the Treasury's programming calendar, not by the political value of any specific vote scheduled that month.
 
@@ -161,7 +148,6 @@ Table~\ref{tab:stylized} reports the year-by-modality breakdown together with th
 \centering
 \caption{Annual amendment commitment by primary-result category, 2014--2025.}
 \label{tab:stylized}
-\begin{threeparttable}
 \small
 \setlength{\tabcolsep}{4pt}
 \begin{tabular}{lrrrrrrrrr}
@@ -190,7 +176,6 @@ Year & RP-6 & RP-6 Pix & RP-7 & RP-8 & RP-9 & Total & Total & Mandatory & Discr.
 \small
 \item Notes: Values in the first six numeric columns are committed amendment volumes in R\$ billions, nominal. ``RP-6 Pix'' is the EC 105/2019 transfer modality (a subset of RP-6), reported separately for transparency. The three ``Share of discretionary spending'' columns report the ratio of amendment commitments to federal primary discretionary spending (the IFI-NT57 / Tesouro Transparente definition of the residual budget the Executive can reallocate after mandatory items). ``Total'' is all amendments; ``Mandatory'' counts RP-6 plus RP-7 (subject to compulsory execution under EC 86/2015 and EC 100/2019, the latter binding from the 2020 budget); ``Discr.''\ counts RP-8 plus RP-9. The mandatory/discretionary split is reported from 2019 onward, when RP-7 began the transition to mandatory status. Dashes denote categories with negligible or zero committed value.
 \end{tablenotes}
-\end{threeparttable}
 \end{table}
 
 \begin{figure}[htbp]
@@ -200,13 +185,12 @@ Year & RP-6 & RP-6 Pix & RP-7 & RP-8 & RP-9 & Total & Total & Mandatory & Discr.
 \label{fig:composition}
 \end{figure}
 
-The third pattern relevant to our analysis is the structural separation between the Centr\~ao bloc and the rest of the Chamber, and its sharpening after the election of Arthur Lira as Chamber president in February 2021. We define the Centr\~ao as the standard nine-party cluster (PP, PL, Republicanos, Solidariedade, Uni\~ao Brasil, PTB, Avante, PSD, MDB), following the categorization used by \citet{Power2010}. The Centr\~ao accounts for $19.8$ percent of the deputy-vote observations in Legislature 55 and $41.8$ percent in Legislature 56, a near doubling that reflects the absorption of the bulk of the Bolsonaro coalition into the bloc after the dissolution of the original PSL-led core in mid-2020. Table~\ref{tab:centrao_descriptive} reports mean alignment with the government and with the party of the Chamber president, plus mean amendment allocation, across the Centr\~ao and non-Centr\~ao groups, separated by sub-period of Legislature 56. The Centr\~ao maintains alignment with the Executive above $0.89$ throughout the legislature, against alignment of $0.61$ to $0.65$ in the non-Centr\~ao. The pattern shifts when we look at alignment with the Chamber president's party. Within the Centr\~ao, alignment with the Chamber-president party rises from $0.902$ pre-Lira to $0.929$ post-Lira while alignment with the Executive falls from $0.912$ to $0.898$ over the same window; in the post-Lira sub-period the Centr\~ao is more aligned with the Chamber-president party than with the Executive. The Pix share of total RP-6 also jumps from approximately $4$ percent before the Lira election to $20.7$ percent (non-Centr\~ao) and $24.5$ percent (Centr\~ao) afterward, with the Centr\~ao preferring the less traceable modality at a noticeably higher rate. Mean RP-6 allocation in volume terms is essentially identical across the two groups.
+The third pattern relevant to our analysis is the structural separation between the Centr\~ao bloc and the rest of the Chamber, and its sharpening after the election of Arthur Lira as Chamber president in February 2021. We define the Centr\~ao as the standard nine-party cluster (PP, PL, Republicanos, Solidariedade, Uni\~ao Brasil, PTB, Avante, PSD, MDB), following the categorization used by \citet{Power2010}. The Centr\~ao accounts for $19.8$ percent of the deputy-vote observations in Legislature 55 and $41.8$ percent in Legislature 56, a near doubling that reflects the absorption of the bulk of the Bolsonaro coalition into the bloc after the dissolution of the original PSL-led core in mid-2020. Table~\ref{tab:centrao_descriptive} reports mean alignment with the government and with the party of the Chamber president, plus mean amendment allocation, across the Centr\~ao and non-Centr\~ao groups, separated by sub-period of Legislature 56. The Centr\~ao maintains alignment with the Executive above $0.89$ throughout the legislature, against alignment of $0.61$ to $0.65$ in the non-Centr\~ao. The pattern shifts when we look at alignment with the Chamber president's party. Within the Centr\~ao, alignment with the Chamber-president party rises from $0.902$ pre-Lira to $0.929$ post-Lira while alignment with the Executive falls from $0.912$ to $0.898$ over the same window; in the post-Lira sub-period the Centr\~ao is more aligned with the Chamber-president party than with the Executive. The Pix share of total RP-6 also jumps from approximately $4$ percent before the Lira election to $20.7$ percent (non-Centr\~ao) and $24.5$ percent (Centr\~ao) afterward, with the Centr\~ao preferring the less traceable modality at a noticeably higher rate. Mean RP-6 allocation in volume terms is close to identical across the two groups.
 
 \begin{table}[htbp]
 \centering
 \caption{Mean alignment and amendment allocation by Centr\~ao status and sub-period (Legislature 56).}
 \label{tab:centrao_descriptive}
-\begin{threeparttable}
 \small
 \setlength{\tabcolsep}{6pt}
 \begin{tabular}{lcccc}
@@ -227,8 +211,21 @@ Pix / RP-6 (\%)                       & 3.7   & 20.7  & 4.0   & 24.5  \\
 \small
 \item Notes: Pre-Lira and Post-Lira denote the sub-periods of Legislature 56 separated by the election of Arthur Lira (PP) as Chamber president on 1 February 2021. Mean alignment with Executive is the within-period mean of $y_{it}^{\mathrm{gov}} = \mathbb{1}\{\text{vote}_{it} = \text{government orientation}\}$; mean alignment with Chamber president is the analogous statistic for $y_{it}^{\mathrm{pres}} = \mathbb{1}\{\text{vote}_{it} = \text{orientation of the Chamber president's party}\}$, computed on the subset of observations for which the Chamber-president orientation is recorded (95\% coverage under Maia, 66\% under Lira). Amendment values are per-deputy-vote-window means of pre-vote 60-day committed amount in R\$ millions. The Pix / RP-6 row reports the share of Pix amendments in the total of individual amendments, in percent.
 \end{tablenotes}
-\end{threeparttable}
 \end{table}
+
+\subsection{The polarization environment of the sample window}
+\label{subsec:polarization_context}
+
+The 55th and 56th Legislatures spanned two markedly different phases of legislative polarization. Because part of the interpretation that follows relies on the reader's mental image of the political environment in which the bargains we study took place, we document that environment directly from the roll-call data. Figure~\ref{fig:polarization_backdrop} plots two simple descriptive measures for every year of the sample. The first is the mean absolute gap between the share of coalition deputies voting ``Yes'' and the share of opposition deputies voting ``Yes,'' averaged across all substantive roll-calls in the year; the second is the share of substantive roll-calls that meet a $70/30$ polarization threshold, defined as one of the two sides voting ``Yes'' at a rate of at least $70\%$ while the other side does so at a rate of at most $30\%$, or vice versa. Both statistics depend only on the vote outcome and on the coalition-opposition classification already used in the paper's dependent variable, so they can be replicated from the raw panel without any external construction.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{fig_polarization_backdrop.pdf}
+\caption{Legislative polarization environment during the sample window. Blue line and left axis: mean absolute gap between coalition and opposition shares voting ``Yes'' across all substantive roll-calls in the year. Red dashed line: annual share of substantive roll-calls meeting the $70/30$ threshold (see text). Shaded regions indicate presidential sub-periods. The 2016 spike coincides with the Rousseff impeachment vote. The 2019 dip captures the honeymoon of the incoming Bolsonaro administration; the plateau from 2020 onward describes the post-honeymoon regime in which our Legislature 56 results are identified.}
+\label{fig:polarization_backdrop}
+\end{figure}
+
+The pattern the figure describes is the empirical backdrop for the results that follow. The 2016 impeachment period registers as a peak in both measures. The Temer administration operates in a moderately polarized environment. The Bolsonaro first year exhibits an unusual dip, consistent with the government's initial honeymoon, followed by a return to a persistently more polarized regime from 2020 onward, which is the regime that dominates the Legislature 56 sample by observation count. We make no causal claim about the relationship between this trajectory and the coefficients estimated in Section~\ref{sec:results}. The measure is not used as a mediator, moderator, or control in any of the specifications reported below. Its purpose is only to make explicit the legislative environment in which the two regime-specific coefficients were identified.
 
 % ============================================================================
 \section{Data}
@@ -270,7 +267,6 @@ Table~\ref{tab:iv_validation} consolidates the diagnostic evidence. The Bolsonar
 \centering
 \caption{Instrument strength and sensitivity for the IV-DML specification.}
 \label{tab:iv_validation}
-\begin{threeparttable}
 \small
 \setlength{\tabcolsep}{6pt}
 \begin{tabular}{@{}lcc@{}}
@@ -288,10 +284,9 @@ Clusters (deputies)                  & 614               & 597               \\
 \small
 \item Notes: Diagnostics for the PLIV-DML estimator under the preferred specification (full-clean controls augmented with party fixed effects, within-deputy demeaning, ministry-execution-backlog instrument). Point estimates $\hat\theta$ are reported in Table~\ref{tab:main}. The Anderson--Rubin interval is robust to weak or partially invalid instruments \citep{AndersonRubin1949}. The Cinelli--Hazlett robustness value $\mathrm{RV}_{q=1}$ reports the minimum share of residual variance orthogonal to the treatment that a single unobserved confounder would have to explain to bring $\hat\theta$ to zero \citep{CinelliHazlett2020}.
 \end{tablenotes}
-\end{threeparttable}
 \end{table}
 
-A remark on what $\theta$ identifies is in order. Constitutional Amendment 86 of 2015 removed the annual volume of individual amendments from the Executive's discretionary toolkit for essentially the entire sample window, and EC 100/2019 and EC 105/2019 extended the same treatment to RP-7 and to the Pix modality from 2020 onward. What remained under Executive control was the timing of commitment within the year and a residual impounded share, and our instrument isolates the administratively forced part of that timing. The parameter $\theta$ therefore measures the alignment response to the timing of largely entitled commitments, a related but distinct object from the discretionary-allocation coefficient of \citet{PereiraAndMueller2004}, which was identified on pre-2015 data. The sign and rough magnitude of our Temer-era estimate echo the canonical positive finding, but the identifying margin differs, and we read $\theta$ throughout the paper as a reciprocity response to the timing of committed entitlements rather than as the price of a discretionary favour.
+A remark on what $\theta$ identifies is in order. Constitutional Amendment 86 of 2015 removed the annual volume of individual amendments from the Executive's discretionary toolkit for essentially the entire sample window, and EC 100/2019 and EC 105/2019 extended the same treatment to RP-7 and to the Pix modality from 2020 onward. What remained under Executive control was the timing of commitment within the year and a residual impounded share, and our instrument isolates the administratively forced part of that timing. The parameter $\theta$ therefore measures the alignment response to the timing of largely entitled commitments, a related but distinct object from the discretionary-allocation coefficient of \citet{PereiraAndMueller2004}, which was identified on pre-2015 data. The sign and rough magnitude of our Temer-era estimate echo the classical positive finding, but the identifying margin differs, and we read $\theta$ throughout the paper as a reciprocity response to the timing of committed entitlements rather than as the price of a discretionary favour.
 
 \paragraph{Cross-fitting and cluster-safe fold assignment.} The Double Machine Learning estimator is orthogonalized under the assumption that the fold used to estimate the nuisance functions is disjoint from the fold used to estimate the structural coefficient. In panel data with within-deputy serial correlation the assignment must be performed at the cluster level: no deputy appears both in a nuisance fold and in the corresponding evaluation fold \citep{ChiangKatoMaSasaki2022}. The \texttt{DoubleMLClusterData} interface enforces this restriction by construction when \texttt{cluster\_cols} is provided.
 
@@ -300,7 +295,7 @@ A remark on what $\theta$ identifies is in order. Constitutional Amendment 86 of
 \label{sec:results}
 % ============================================================================
 
-This section reports the two coefficients that organize the empirical evidence. Subsection~\ref{subsec:main_gov} reports the canonical pork-for-votes effect on Executive alignment and documents the sign reversal between the 55th and 56th Legislatures. Subsection~\ref{subsec:legislative_capture} reports the analogous coefficient on alignment with the party of the Chamber president and documents that the bargain re-emerges in the institutional space controlled by Arthur Lira after February 2021. Section~\ref{sec:discussion} discusses the institutional-transfer interpretation.
+The two coefficients that organize the empirical evidence are reported in the two subsections below. Subsection~\ref{subsec:main_gov} documents the sign reversal between the 55th and 56th Legislatures in the pork-for-votes effect on Executive alignment. Subsection~\ref{subsec:legislative_capture} shows that the bargain re-emerges in the institutional space controlled by Arthur Lira after February 2021, when the outcome is redefined as alignment with the party of the Chamber president. The institutional-transfer interpretation is left for Section~\ref{sec:discussion}.
 
 \subsection{The sign reversal in Executive alignment}
 \label{subsec:main_gov}
@@ -311,7 +306,6 @@ Table~\ref{tab:main} reports our central estimates of the structural parameter $
 \centering
 \caption{Main IV-DML estimates: pork-for-votes effect on Executive alignment.}
 \label{tab:main}
-\begin{threeparttable}
 \small
 \begin{tabular}{lccc}
 \toprule
@@ -325,10 +319,9 @@ Legislature 56 (Bolsonaro) & $-0.94^{***}$ & $[-1.37,\,-0.51]$ & 643{,}594 \\
 \small
 \item Notes: PLIV-DML with full-clean controls plus party fixed effects, within-deputy demeaning, deputy-clustered standard errors, backlog instrument, 60-day pre-vote window. The two regimes are reported separately because the pooled estimator does not return a positively weighted average of the regime-specific effects under regime-specific first stages and covariate profiles \citep{Sloczynski2022,BlandholEtAl2022}. Stars: $^{***}p<0.01$, $^{**}p<0.05$, $^{*}p<0.10$.
 \end{tablenotes}
-\end{threeparttable}
 \end{table}
 
-The two legislature-specific coefficients describe a clear sign reversal. Under Temer, an additional one million reais of pre-vote committed amendment raises the probability of Executive alignment by $1.73$ percentage points, statistically significant at the five-percent level and directionally consistent with the classical \citet{PereiraAndMueller2004} estimate on pre-2015 data. The positive Temer-era coefficient is estimated on the smaller subsample and rests more heavily on inter-annual variation in ministry execution. Its weak-instrument-robust Anderson--Rubin interval marginally includes zero (Table~\ref{tab:iv_validation}), and the point estimate attenuates once year fixed effects absorb the inter-annual component (Appendix, Table~\ref{tab:yearfe}). We therefore read the Temer-era estimate as directionally consistent with the canonical positive sign rather than as a precisely identified magnitude, and none of the paper's conclusions rests on its exact value. Under Bolsonaro, the same instrument predicts a $0.94$-point decrease in Executive alignment, statistically significant at the one-percent level. The negative Bolsonaro-era coefficient, by contrast, is unchanged under year fixed effects and under weak-instrument-robust inference, and it survives each atypical-period exclusion individually (Appendix, Subsection~\ref{appsub:atypical}). A fully non-parametric robustness check based on the Causal IV Forest of \citet{AtheyTibshiraniWager2019} reproduces the sign reversal: the median pointwise CATE is $+1.79$ percentage points in Legislature 55 and $-1.97$ in Legislature 56, essentially identical to the parametric benchmark (Appendix~\ref{app:cforest}, Table~\ref{tab:cforest}).
+The two legislature-specific coefficients describe a clear sign reversal. Under Temer, an additional one million reais of pre-vote committed amendment raises the probability of Executive alignment by $1.73$ percentage points, statistically significant at the five-percent level and directionally consistent with the classical \citet{PereiraAndMueller2004} estimate on pre-2015 data. The positive Temer-era coefficient is estimated on the smaller subsample and rests more heavily on inter-annual variation in ministry execution. Its weak-instrument-robust Anderson--Rubin interval marginally includes zero (Table~\ref{tab:iv_validation}), and the point estimate attenuates once year fixed effects absorb the inter-annual component (Appendix, Table~\ref{tab:yearfe}). We therefore read the Temer-era estimate as directionally consistent with the canonical positive sign rather than as a precisely identified magnitude, and none of the paper's conclusions rests on its exact value. Under Bolsonaro, the same instrument predicts a $0.94$-point decrease in Executive alignment, statistically significant at the one-percent level. The negative Bolsonaro-era coefficient, by contrast, is unchanged under year fixed effects and under weak-instrument-robust inference, and it survives each atypical-period exclusion individually (Appendix, Subsection~\ref{appsub:atypical}). A formal test of the equality $\hat\theta_{55} = \hat\theta_{56}$ rejects the null: the difference of $+2.83$ percentage points per R\$1M has a standard error of $0.77$, yielding $z = 3.67$ and $p < 0.001$. The two regime-specific estimates are therefore statistically distinguishable and the reversal is not an artifact of the individual precision of either coefficient. A fully non-parametric robustness check based on the Causal IV Forest of \citet{AtheyTibshiraniWager2019} reproduces the sign reversal: the median pointwise CATE is $+1.79$ percentage points in Legislature 55 and $-1.97$ in Legislature 56, essentially identical to the parametric benchmark (Appendix~\ref{app:cforest}, Table~\ref{tab:cforest}).
 
 A natural first reading of Table~\ref{tab:main} would be that pork-for-votes ceased to function under Bolsonaro. The next subsection shows that this reading is wrong on the substance: the negative coefficient on Executive alignment is mirrored by a positive coefficient on alignment with the Chamber president's party.
 
@@ -343,7 +336,6 @@ Table~\ref{tab:chamber_pres} reports the test. We re-estimate the structural par
 \centering
 \caption{Pork-for-votes effect on alignment with the Chamber president's party.}
 \label{tab:chamber_pres}
-\begin{threeparttable}
 \small
 \begin{tabular}{lcccc}
 \toprule
@@ -360,10 +352,9 @@ Legislature 56, Lira (PP) presidency            & $+0.33^{**}$  & $[+0.01,\,+0.6
 \small
 \item Notes: IV-DML estimates of the pork-for-votes effect when the outcome equals one if the deputy votes in agreement with the formal voting orientation of the party of the Chamber president. Authorship of the orientation is assigned by the calendar of the Chamber presidency. Preferred PLIV-DML specification with full-clean controls plus party fixed effects, deputy demeaning, backlog instrument, deputy-clustered standard errors. Figure~\ref{fig:legislative_capture} reports the same coefficients as a forest plot.
 \end{tablenotes}
-\end{threeparttable}
 \end{table}
 
-Three patterns are noteworthy. First, in the Maia sub-period of Legislature 55, the amendment effect on alignment with DEM is $-2.76$ percentage points per million reais, statistically significant at the one-percent level. The coefficient has the same sign as the Temer-era Executive coefficient and the two move together: DEM was a junior coalition partner of the Temer government, so the alignments are economically identical and the two coefficients are not independent observations. Second, in the Maia sub-period of Legislature 56, the analogous coefficient on alignment with DEM is statistically indistinguishable from zero. DEM is no longer in the Bolsonaro coalition, and the pork instrument does not buy alignment with a party that has neither Executive influence nor a Chamber-president position aligned with the bargain. Third, in the Lira sub-period of Legislature 56, the coefficient on alignment with PP is $+0.33$ percentage points per million reais, statistically significant at the five-percent level. Excluding PP deputies leaves the estimate at $+0.32$ and statistically significant at the ten-percent level, indicating that the bargain operates beyond the Chamber president's own party. Further restricting the sample to deputies whose party does not belong to the broader Centr\~ao reduces the estimate to $-0.06$ percentage points, statistically zero, indicating that the bargain operates entirely within the Centr\~ao coalition rather than across the floor.
+The five sub-periods yield three substantive patterns. In the Maia sub-period of Legislature 55, the amendment effect on alignment with DEM is $-2.76$ percentage points per million reais, statistically significant at the one-percent level. The coefficient has the same sign as the Temer-era Executive coefficient and the two move together: DEM was a junior coalition partner of the Temer government, so the alignments are economically identical and the two coefficients are not independent observations. In the Maia sub-period of Legislature 56, the analogous coefficient on alignment with DEM is statistically indistinguishable from zero. DEM is no longer in the Bolsonaro coalition, and the pork instrument does not buy alignment with a party that has neither Executive influence nor a Chamber-president position aligned with the bargain. Under Lira's presidency, the coefficient on alignment with PP is $+0.33$ percentage points per million reais, statistically significant at the five-percent level. Excluding PP deputies leaves the estimate at $+0.32$ and statistically significant at the ten-percent level, indicating that the bargain operates beyond the Chamber president's own party. Further restricting the sample to deputies whose party does not belong to the broader Centr\~ao reduces the estimate to $-0.06$ percentage points, statistically zero, indicating that the bargain operates entirely within the Centr\~ao coalition rather than across the floor.
 
 \begin{figure}[htbp]
 \centering
@@ -379,13 +370,13 @@ The Temer-Executive coefficient ($+1.73$) and the Lira-Chamber-president coeffic
 \label{sec:discussion}
 % ============================================================================
 
-The two coefficients reported in Section~\ref{sec:results} together describe a regime change in the Brazilian pork-for-votes relationship. The Temer-era estimate of $+1.73$ percentage points per million reais on Executive alignment replicates the canonical \citet{PereiraAndMueller2004} pattern. The Bolsonaro-era estimate of $-0.94$ percentage points on the same outcome reverses it. The Bolsonaro-era estimate of $+0.33$ percentage points on Chamber-president alignment (under Lira, post-February 2021) recovers the canonical positive sign once the outcome is re-defined to track the institutional actor that now controls the residual bargaining margin.
+The two coefficients reported in Section~\ref{sec:results} together describe a regime change in the Brazilian pork-for-votes relationship. The Temer-era estimate of $+1.73$ percentage points per million reais on Executive alignment replicates the \citet{PereiraAndMueller2004} pattern. The Bolsonaro-era estimate of $-0.94$ percentage points on the same outcome reverses it. The Bolsonaro-era estimate of $+0.33$ percentage points on Chamber-president alignment (under Lira, post-February 2021) recovers the classical positive sign once the outcome is re-defined to track the institutional actor that now controls the residual bargaining margin.
 
 The interpretation we adopt is one of institutional transfer. The post-2015 constitutional reforms (EC 86/2015, EC 100/2019, EC 105/2019) removed the volume dimension of parliamentary amendments from the Executive's discretionary toolkit and preserved only the timing and modality of execution as residual instruments. The election of Arthur Lira as Chamber president in February 2021, backed by the Centr\~ao and by an Executive under acute impeachment pressure, transferred those residual instruments to the Chamber leadership \citep{GrazianeEtAl2022RP9,BrazilReports2022SecretBudget,TCU2022RelatorioContas}. The visible-amendment coefficient followed the transfer: alignment with the Executive became detached from amendment execution, while alignment with the Chamber president's party became coupled to it. The bargain did not disappear; it changed hands.
 
 The Secret Budget (RP-9) is best read as a third leg of the same institutional transfer rather than as a competing explanation. RP-9 transfers between 2020 and 2022 were nominally attributed to the budget rapporteur, an institutional figure named by the Chamber president; the post-2022 RP-8 and Pix substitution documented in Subsection~\ref{subsec:rp9_episode} preserves the legislative authorship structure. The opaque channel and the visible channel converge on the same institutional principal during the Lira presidency. The substantive content of the pork-for-votes bargain has not disappeared; it has been re-routed through a different institutional actor, with both visible and opaque components now traveling through the Chamber leadership rather than through the Executive. The post-ADPF 854 substitution dynamics confirm the durability of this institutional transfer beyond any specific legal instrument.
 
-We emphasize what the findings do not say. They do not say that pork-barrel has ceased to function in Brazil. They say that the canonical positive sign of the pork-for-votes coefficient is conditional on the institutional identity of the principal who controls the residual margin of execution. They also do not say that the Bolsonaro government was less effective at coalition management; the Bolsonaro period saw extremely high coalition discipline on most roll-call votes. They say that the marginal vote was not for sale through visible Executive-aligned amendments under the institutional conditions of that period, while it remained for sale through visible Chamber-president-aligned amendments once Arthur Lira assumed the Chamber presidency.
+We emphasize what the findings do not say. They do not say that pork-barrel has ceased to function in Brazil. They say that the canonical positive sign of the pork-for-votes coefficient is conditional on the institutional identity of the principal who controls the residual margin of execution. They also do not say that the Bolsonaro government was less effective at coalition management; the Bolsonaro period saw very high coalition discipline on most roll-call votes. They say that the marginal vote was not for sale through visible Executive-aligned amendments under the institutional conditions of that period, while it remained for sale through visible Chamber-president-aligned amendments once Arthur Lira assumed the Chamber presidency.
 
 % ============================================================================
 \section{Conclusion}
@@ -398,10 +389,9 @@ The findings revise the canonical Brazilian pork-for-votes literature \citep{Per
 
 The broader implication is that pork-for-votes coefficients estimated on any single institutional configuration are not structural parameters but reduced forms of a deeper regime. Whenever constitutional, judicial, or procedural reforms shift control over the budget between institutional principals, the associated bargaining coefficients should be expected to shift with them. Such shifts recur across coalition-presidential democracies whenever legislatures rewrite the rules of budget execution or courts intervene in the distribution of discretionary authority. Legislative capture, then, is a general mechanism rather than a Brazilian idiosyncrasy: it describes the equilibrium that emerges when the legislature acquires procedural instruments that substitute for the Executive's traditional discretionary ones, and it is a hypothesis available to any coalition-presidential system in which analogous reforms have taken place.
 
-Two limitations bound the interpretation. The parallel Secret Budget channel introduced an opaque dimension of executive-legislative bargaining during 2020--2022 that we cannot measure at the deputy level, so the Bolsonaro-era coefficient on the Executive outcome captures the effect of visible amendments only; the post-2022 RP-8 and Pix substitution documented in Subsection~\ref{subsec:rp9_episode} shows that the legislative-capture channel persists beyond our sample window through different institutional vehicles. The Temer-era estimate is also identified off inter-annual variation that the backlog instrument deliberately exploits; adding year fixed effects absorbs this variation and attenuates the estimate, as we document in Appendix~\ref{app:robustness}. Neither limitation overturns the central finding. A natural and promising extension is to bring the rhetorical channel into the same framework. Floor-speech sentiment can serve as an alternative treatment in the DML setup and would enable a direct horse race between pork and rhetoric as instruments of executive influence. A second extension is the allocative side of the bargain: the function-by-function and region-by-region distribution of amendment commitments would shed light on how the institutional regime shapes the targeting of distributive resources beyond their effect on alignment. We leave both for future work.
+Two limitations bound the interpretation. The parallel Secret Budget channel introduced an opaque dimension of executive-legislative bargaining during 2020--2022 that we cannot measure at the deputy level, so the Bolsonaro-era coefficient on the Executive outcome captures the effect of visible amendments only; the post-2022 RP-8 and Pix substitution documented in Subsection~\ref{subsec:rp9_episode} shows that the legislative-capture channel persists beyond our sample window through different institutional vehicles. The Temer-era estimate is also identified off inter-annual variation that the backlog instrument deliberately exploits; adding year fixed effects absorbs this variation and attenuates the estimate, as we document in Appendix~\ref{app:robustness}. Neither limitation overturns the central finding. One direction we plan to pursue is the rhetorical channel: floor-speech sentiment can serve as an alternative treatment in the DML setup and would let us compare pork and rhetoric as levers of executive influence within a common framework. A second direction is the allocative side of the bargain, the function-by-function and region-by-region distribution of amendment commitments, which would shed light on how the institutional regime shapes the targeting of distributive resources beyond their effect on alignment. We leave both for future work.
 
 % ============================================================================
-\bibliographystyle{plainnat}
 \bibliography{refs}
 
 % ============================================================================
@@ -427,7 +417,6 @@ Table~\ref{tab:atypical} reports the main specification re-estimated after seque
 \centering
 \caption{Robustness to exclusion of atypical periods (Executive outcome, pp per R\$1M).}
 \label{tab:atypical}
-\begin{threeparttable}
 \small
 \begin{tabular}{lccc}
 \toprule
@@ -440,7 +429,6 @@ Pandemic Q1--Q2 2020         & $-2.62^{***}$ & $+1.96^{***}$ & $-0.72^{***}$ \\
 All atypical periods removed & $-3.11^{***}$ & $+1.50^{**}$  & $-0.20\hspace{1.4em}$ \\
 \bottomrule
 \end{tabular}
-\end{threeparttable}
 \end{table}
 
 Table~\ref{tab:yearfe} reports the sensitivity to the inclusion of year fixed effects. Including year FE drives the Temer-era estimate from $+1.82$ to $+0.39$, a 78 percent attenuation, while the Bolsonaro-era estimate moves only marginally. This is the methodological consequence of the backlog instrument: it extracts inter-annual variation in ministry execution patterns, and year fixed effects absorb that variation by construction, weakening identification on precisely the margin our instrument was designed to exploit. We adopt the no-year-FE specification as our main estimate and report year-FE as a robustness exercise.
@@ -449,7 +437,6 @@ Table~\ref{tab:yearfe} reports the sensitivity to the inclusion of year fixed ef
 \centering
 \caption{Sensitivity to year and party fixed effects (pp per R\$1M).}
 \label{tab:yearfe}
-\begin{threeparttable}
 \small
 \begin{tabular}{lcc}
 \toprule
@@ -461,19 +448,17 @@ Full-clean (baseline)                & $+1.82^{**}$  & $-0.94^{***}$ \\
 \quad + year FE + party FE           & $+0.15\hspace{1.4em}$ & $-0.93^{***}$ \\
 \bottomrule
 \end{tabular}
-\end{threeparttable}
 \end{table}
 
 \subsection{Sociodemographic control ablation}
 \label{app:ablation}
 
-Table~\ref{tab:ablation} reports the sociodemographic ablation summarized in Section~\ref{sec:strategy}. The Bolsonaro-era estimate is essentially invariant across the six specifications; the Temer-era estimate is more sensitive but the qualitative reversal between legislatures is preserved.
+Table~\ref{tab:ablation} reports the sociodemographic ablation. The Bolsonaro-era estimate is invariant across the six specifications; the Temer-era estimate is more sensitive but the qualitative reversal between legislatures is preserved.
 
 \begin{table}[htbp]
 \centering
 \caption{Sociodemographic control ablation (pp per R\$1M).}
 \label{tab:ablation}
-\begin{threeparttable}
 \small
 \begin{tabular}{lcc}
 \toprule
@@ -487,7 +472,6 @@ Full-clean (baseline)                       & $+1.82^{**}$  & $-0.94^{***}$ \\
 \quad + year + party FE                     & $+0.15\hspace{1.4em}$ & $-0.93^{***}$ \\
 \bottomrule
 \end{tabular}
-\end{threeparttable}
 \end{table}
 
 \subsection{Direct controls for the opaque channel}
@@ -499,7 +483,6 @@ The interpretation of the Bolsonaro-era coefficient depends in part on the assum
 \centering
 \caption{IV-DML estimates with and without direct controls for opaque-channel exposure (pp per R\$1M, dual outcome).}
 \label{tab:rp9_controls}
-\begin{threeparttable}
 \small
 \begin{tabular}{lcc}
 \toprule
@@ -515,7 +498,6 @@ Legislature 56, base + opaque proxies     & $-0.94^{***}$ & $-1.32^{***}$ \\
 \small
 \item Notes: Augmented specifications add $d_{\mathrm{rp9}}$ (RP-9 supporting parliamentarian indicator) and $\mathrm{share}_{\mathrm{pix}}$ to the full-clean control set. The base spec excludes these proxies by construction (they are treated as bad controls in the main specification, see Section~\ref{sec:data}). The Chamber-president outcome estimates are reported with the Maia and Lira sub-periods averaged within each legislature.
 \end{tablenotes}
-\end{threeparttable}
 \end{table}
 
 \subsection{Falsifications}
@@ -544,7 +526,6 @@ We assess the linearity of the structural relationship with an augmented model w
 \centering
 \caption{Quadratic-treatment IV-2SLS estimates (Executive outcome).}
 \label{tab:quadratic}
-\begin{threeparttable}
 \small
 \begin{tabular}{lccc}
 \toprule
@@ -556,7 +537,6 @@ $T^{*}$ (inflection, R\$M)               & 2.88            & 2.99            & 2
 $N$                                      & 869{,}902        & 226{,}308        & 643{,}594       \\
 \bottomrule
 \end{tabular}
-\end{threeparttable}
 \end{table}
 
 \subsection{Within-PEC analysis of two-round amendments}
@@ -582,7 +562,6 @@ The three coefficients reported in Section~\ref{sec:results} are estimated under
 \centering
 \caption{Non-parametric robustness check: Causal IV Forest by legislature and outcome.}
 \label{tab:cforest}
-\begin{threeparttable}
 \footnotesize
 \setlength{\tabcolsep}{4pt}
 \begin{tabular}{llcccc}
@@ -603,11 +582,10 @@ Centr\~ao bloc     & 55 & ---           & $-3.90$ & $-0.14$ & $[-4.04,\,-3.75]$ 
 \small
 \item Notes: All entries in percentage points per R\$1 million of pre-vote committed amendment. The Causal IV Forest is estimated with within-deputy demeaning, the first-stage projection of the backlog instrument's two variables as a one-dimensional scalar, $500$ honest trees, $\min\_\mathrm{samples\_leaf} = 400$, and $\max\_\mathrm{depth} = 10$. The sample is capped at $200{,}000$ observations per legislature and outcome. The forest mean and median are computed on the pointwise CATE distribution after symmetric Winsorization at the first and ninety-ninth percentiles. Bootstrap confidence intervals on the mean are obtained from $200$ resamples of the CATE distribution. The PLIV-DML column reports the legislature-level benchmark from Table~\ref{tab:main} for the Executive outcome; the Chamber-president benchmark of Table~\ref{tab:chamber_pres} is computed at finer sub-period granularity (Maia vs.\ Lira) and is not directly comparable to a legislature-level aggregate.
 \end{tablenotes}
-\end{threeparttable}
 \end{table}
 
 \paragraph{Reading the table.} The reading aligns with the parametric findings of Section~\ref{sec:results} along the three dimensions that organize the paper. For the Executive outcome, the forest median goes from $+1.79$ percentage points in Legislature 55 to $-1.97$ in Legislature 56, essentially reproducing the parametric sign reversal of $+1.73$ to $-0.94$. For the Chamber-president and the Centr\~ao outcomes, the median CATE is negative and small in absolute value across both legislatures (between $-0.09$ and $-1.11$); the bargaining effect identified in the main text for those outcomes operates within narrower sub-periods (Lira from February 2021 onward), and the legislature-level aggregate that the forest estimates here washes out the within-legislature heterogeneity that drives the parametric coefficient of Table~\ref{tab:chamber_pres}. In other words, the forest does not contradict the legislative-capture finding; it confirms that, averaged over the full legislature, the Chamber-president and Centr\~ao alignment effects are small, in line with the parametric estimates pooled over the same horizon.
 
-The mean and the median of the Winsorized CATE distribution differ substantially in absolute magnitude. This is expected: the forest's local IV moment equation is sensitive to the leaf-level instrument strength, and pointwise CATE estimates in leaves with weaker instrumental variation inflate the variance of the distribution. The median is the appropriate central-tendency statistic in this setting, and it is the median that reproduces the parametric benchmark. We treat the forest exercise as a robustness reading that corroborates the narrative of Section~\ref{sec:results} rather than as a parallel main estimate; the PLIV-DML specification, with its $\sqrt{n}$-convergent ATE under cross-fitted ElasticNet \citep{Chernozhukov2018}, remains the preferred econometric framework.
+The mean and the median of the Winsorized CATE distribution differ substantially in absolute magnitude. The gap has a mechanical source: the forest's local IV moment equation is sensitive to the leaf-level instrument strength, and pointwise CATE estimates in leaves with weaker instrumental variation inflate the variance of the distribution. The median is the appropriate central-tendency statistic in this setting, and it is the median that reproduces the parametric benchmark. We treat the forest exercise as a robustness reading that corroborates the narrative of Section~\ref{sec:results} rather than as a parallel main estimate; the PLIV-DML specification, with its $\sqrt{n}$-convergent ATE under cross-fitted ElasticNet \citep{Chernozhukov2018}, remains the preferred econometric framework.
 
 \end{document}
