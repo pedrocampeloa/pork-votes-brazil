@@ -98,6 +98,7 @@ overleaf_upload.zip
 # Reviewer coordination docs (internal — not public)
 REPORT_*.md
 paper_comments_*.zip
+Pedro_Campelo*.zip
 
 # LaTeX .bak files (local backups)
 *.tex.bak
